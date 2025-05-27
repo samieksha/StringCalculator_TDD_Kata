@@ -33,3 +33,9 @@ test('supports custom delimiter', () => {
   const sc = new StringCalculator();
   expect(sc.add("//;\n1;2")).toBe(3);
 });
+
+//TEST CASE 5
+test('throws on negative numbers', () => {
+  const sc = new StringCalculator();
+  expect(() => sc.add("1,-2,-3")).toThrow("negatives not allowed: -2, -3");
+});

@@ -15,10 +15,13 @@ class StringCalculator {
       }
     }
 
-    return numbers
-      .split(delimiterRegex)
-      .map(Number)
-      .reduce((sum, num) => sum + num, 0);
+    const parts = numbers.split(delimiterRegex).map(Number);
+    const negatives = parts.filter(n => n < 0);
+    if (negatives.length) {
+      throw new Error(`negatives not allowed: ${negatives.join(', ')}`);
+    }
+
+    return parts.reduce((sum, num) => sum + num, 0);
   }
 }
 module.exports = StringCalculator;
