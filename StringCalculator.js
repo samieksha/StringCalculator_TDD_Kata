@@ -21,7 +21,9 @@ class StringCalculator {
       throw new Error(`negatives not allowed: ${negatives.join(', ')}`);
     }
 
-    return parts.reduce((sum, num) => sum + num, 0);
+    return parts
+      .filter(n => n <= 1000)
+      .reduce((sum, num) => sum + num, 0);
   }
 }
 module.exports = StringCalculator;

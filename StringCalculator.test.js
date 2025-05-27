@@ -39,3 +39,10 @@ test('throws on negative numbers', () => {
   const sc = new StringCalculator();
   expect(() => sc.add("1,-2,-3")).toThrow("negatives not allowed: -2, -3");
 });
+
+//TEST CASE 6
+test('ignores numbers greater than 1000', () => {
+  const sc = new StringCalculator();
+  expect(sc.add("2,1001")).toBe(2);
+});
+
