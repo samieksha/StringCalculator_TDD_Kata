@@ -15,3 +15,10 @@ test('returns sum for two numbers', () => {
   const sc = new StringCalculator();
   expect(sc.add("1,2")).toBe(3);
 });
+
+//TEST CASE 2
+test('returns sum for multiple numbers', () => {
+  const sc = new StringCalculator();
+  expect(sc.add("1,2,3,4")).toBe(10);
+});
+
