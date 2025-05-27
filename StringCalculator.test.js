@@ -53,3 +53,21 @@ test('tracks number of add calls', () => {
   sc.add("3,4");
   expect(sc.getCalledCount()).toBe(2);
 });
+
+//TEST CASE 8
+test('emits event after add is called', () => {
+  const sc = new StringCalculator();
+
+  let capturedInput = null;
+  let capturedResult = null;
+
+  sc.onAddOccurred((input, result) => {
+    capturedInput = input;
+    capturedResult = result;
+  });
+
+  const result = sc.add("1,2");
+
+  expect(capturedInput).toBe("1,2");
+  expect(capturedResult).toBe(result);
+});

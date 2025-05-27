@@ -1,15 +1,27 @@
 class StringCalculator {
   constructor() {
     this.callCount = 0;
+    this.addOccurredListeners = [];
   }
 
   getCalledCount() {
     return this.callCount;
   }
 
+  onAddOccurred(listener) {
+    this.addOccurredListeners.push(listener);
+  }
+
+  	
+  _triggerAddOccurred(input, result) {
+    this.addOccurredListeners.forEach(fn => fn(input, result));
+  }
+
   add(numbers) {
     this.callCount++;
-    if (!numbers) return 0;
+    if (!numbers) {
+      this._triggerAddOccurred(numbers, 0);
+      return 0};
 
     let delimiterRegex = /,|\n/;
 
@@ -30,9 +42,12 @@ class StringCalculator {
       throw new Error(`negatives not allowed: ${negatives.join(', ')}`);
     }
 
-    return parts
+    const total = parts
       .filter(n => n <= 1000)
       .reduce((sum, num) => sum + num, 0);
+
+    this._triggerAddOccurred(numbers, total);
+    return total;
   }
 }
 module.exports = StringCalculator;
