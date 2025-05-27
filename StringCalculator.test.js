@@ -22,3 +22,8 @@ test('returns sum for multiple numbers', () => {
   expect(sc.add("1,2,3,4")).toBe(10);
 });
 
+//TEST CASE 3
+test('handles newlines between numbers', () => {
+  const sc = new StringCalculator();
+  expect(sc.add("1\n2,3")).toBe(6);
+});
