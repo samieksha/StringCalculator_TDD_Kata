@@ -1,5 +1,14 @@
 class StringCalculator {
+  constructor() {
+    this.callCount = 0;
+  }
+
+  getCalledCount() {
+    return this.callCount;
+  }
+
   add(numbers) {
+    this.callCount++;
     if (!numbers) return 0;
 
     let delimiterRegex = /,|\n/;

@@ -46,3 +46,10 @@ test('ignores numbers greater than 1000', () => {
   expect(sc.add("2,1001")).toBe(2);
 });
 
+//TEST CASE 7
+test('tracks number of add calls', () => {
+  const sc = new StringCalculator();
+  sc.add("1,2");
+  sc.add("3,4");
+  expect(sc.getCalledCount()).toBe(2);
+});
