@@ -27,3 +27,9 @@ test('handles newlines between numbers', () => {
   const sc = new StringCalculator();
   expect(sc.add("1\n2,3")).toBe(6);
 });
+
+//TEST CASE 4
+test('supports custom delimiter', () => {
+  const sc = new StringCalculator();
+  expect(sc.add("//;\n1;2")).toBe(3);
+});
